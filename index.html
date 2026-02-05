@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Crypto Predictions - I Voted!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .card {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            max-width: 600px;
+            background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 40%, #000000 100%);
+            border-radius: 16px;
+            padding: 40px 44px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Subtle noise/texture overlay */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Subtle glow accents */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .title {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .year {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            margin: 16px 0;
+        }
+
+        .handle {
+            font-size: 38px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .voted-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        .voted-count {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 700;
+        }
+
+        .bottom-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .firms-section {
+            margin-bottom: 20px;
+        }
+
+        .firms-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 12px;
+        }
+
+        .firms-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .firm-tag {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.3px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .results-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+        }
+
+        .built-by {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+        }
+
+        /* Buttons below card */
+        .actions {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .instructions {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 28px 24px;
+                border-radius: 12px;
+            }
+
+            .title {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+
+            .year {
+                font-size: 40px;
+            }
+
+            .handle {
+                font-size: 28px;
+            }
+
+            .badge {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .firms-list {
+                gap: 6px;
+            }
+
+            .firm-tag {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="shareCard">
+            <div class="header">
+                <div class="title-section">
+                    <div class="title">Crypto Predictions</div>
+                    <div class="year">2026</div>
+                </div>
+                <div class="badge">I Voted ✓</div>
+            </div>
+
+            <div class="main-content">
+                <div class="handle" id="userHandle">@username</div>
+                <div class="voted-text">
+                    Voted on <span class="voted-count">50 predictions</span> from top research firms
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="firms-section">
+                    <div class="firms-label">Firms Covered</div>
+                    <div class="firms-list">
+                        <span class="firm-tag">a16z</span>
+                        <span class="firm-tag">Messari</span>
+                        <span class="firm-tag">Delphi</span>
+                        <span class="firm-tag">Coinbase</span>
+                        <span class="firm-tag">Blocmates</span>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="results-text">Results graded in December 2026</div>
+                    <div class="built-by">built by @pgreyy</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="#" class="btn btn-primary" id="shareBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                Share on X
+            </a>
+            <button class="btn btn-secondary" id="downloadBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                Download
+            </button>
+        </div>
+
+        <p class="instructions">📸 Screenshot or download the card and share it!</p>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const handle = urlParams.get('handle');
+        
+        if (handle) {
+            const cleanHandle = handle.startsWith('@') ? handle : '@' + handle;
+            document.getElementById('userHandle').textContent = cleanHandle;
+        }
+
+        document.getElementById('shareBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const tweetText = `I just voted on 50 crypto predictions for 2026 🔮
+
+Firms covered: a16z, Messari, Delphi, Coinbase & Blocmates
+
+Who's right? We'll find out in December.
+
+Take the survey 👇
+[YOUR_TALLY_LINK]`;
+            
+            const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.open(tweetUrl, '_blank');
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const card = document.getElementById('shareCard');
+            
+            html2canvas(card, {
+                backgroundColor: '#000000',
+                scale: 2,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '2026-crypto-predictions.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
