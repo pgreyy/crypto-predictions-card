@@ -39,9 +39,10 @@
             width: 100%;
             aspect-ratio: 3 / 2;
             max-width: 600px;
+            min-height: 400px;
             background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 40%, #000000 100%);
             border-radius: 16px;
-            padding: 40px 44px;
+            padding: 36px 32px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -266,27 +267,36 @@
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+
             .card {
-                padding: 28px 24px;
+                padding: 28px 20px;
                 border-radius: 12px;
+                min-height: 360px;
             }
 
             .title {
-                font-size: 16px;
+                font-size: 14px;
                 letter-spacing: 2px;
             }
 
             .year {
-                font-size: 40px;
+                font-size: 36px;
             }
 
             .handle {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .badge {
-                padding: 8px 12px;
+                padding: 6px 10px;
                 font-size: 11px;
+            }
+
+            .voted-text {
+                font-size: 14px;
             }
 
             .firms-list {
@@ -296,6 +306,18 @@
             .firm-tag {
                 font-size: 10px;
                 padding: 6px 10px;
+            }
+
+            .footer {
+                padding-top: 12px;
+            }
+
+            .results-text {
+                font-size: 10px;
+            }
+
+            .built-by {
+                font-size: 10px;
             }
 
             .actions {
@@ -378,7 +400,7 @@ Firms covered: a16z, Messari, Delphi, Coinbase & Blocmates
 Who's right? We'll find out in December.
 
 Take the survey 👇
-[YOUR_TALLY_LINK]`;
+https://tally.so/r/1AVOJp`;
             
             const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
             window.open(tweetUrl, '_blank');
